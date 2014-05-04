@@ -14,6 +14,9 @@ defmodule MyLists do
     _max(tail, current_max)
   end
 
+  def span(from, from), do: [from]
+  def span(from, to),   do: [from | span(from+1, to)]
+
 end
 
 
@@ -25,3 +28,4 @@ IO.puts MyLists.max([1, 2])
 IO.puts MyLists.max([1, 2, 3])
 IO.puts MyLists.max([3, 2, 1])
 
+IO.inspect MyLists.span(11, 17)
