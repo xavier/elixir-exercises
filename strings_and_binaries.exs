@@ -56,6 +56,14 @@ defmodule StringsAndBinaries do
     end
   end
 
+  @sentence_delimiter ". "
+
+  def capitalize_sentences(string) do
+    String.split(string, @sentence_delimiter)
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(@sentence_delimiter)
+  end
+
 end
 
 IO.puts StringsAndBinaries.is_ascii?('abc 123~XYZ')
@@ -76,3 +84,5 @@ IO.inspect StringsAndBinaries.calculate('36   / 18')
 IO.inspect StringsAndBinaries.calculate('123 -  27')
 
 StringsAndBinaries.center(["cat", "zebra", "elephant"])
+
+IO.puts StringsAndBinaries.capitalize_sentences("oh. a DOG. woof. ")
