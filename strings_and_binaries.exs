@@ -47,6 +47,15 @@ defmodule StringsAndBinaries do
     charlist
   end
 
+  def center(word_list) do
+    max_length = Enum.max(Enum.map(word_list, &String.length/1))
+    Enum.each word_list, fn (word) ->
+      word_length = String.length(word)
+      padding = div(max_length - word_length, 2)
+      IO.puts String.rjust(word, word_length+padding)
+    end
+  end
+
 end
 
 IO.puts StringsAndBinaries.is_ascii?('abc 123~XYZ')
@@ -65,3 +74,5 @@ IO.inspect StringsAndBinaries.calculate('123 + 27')
 IO.inspect StringsAndBinaries.calculate('17 * 2')
 IO.inspect StringsAndBinaries.calculate('36   / 18')
 IO.inspect StringsAndBinaries.calculate('123 -  27')
+
+StringsAndBinaries.center(["cat", "zebra", "elephant"])
