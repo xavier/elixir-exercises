@@ -1,0 +1,2 @@
+%{"httpotion": {:git, "git://github.com/pragdave/httpotion.git", "3939fc28c7c5cbeaeeb8bb775d0a26c222468d7f", []},
+  "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "5bae7308a749f2dc801347c27f56dc1a21996aea", []}}
