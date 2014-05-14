@@ -38,6 +38,8 @@ defmodule Issues.CLI do
   def process({username, project, count}) do
     Issues.GitHubIssues.fetch(username, project)
     |> decode_response
+    |> convert_list_to_hashdicts
+    |> sort_into_ascending_order
   end
 
   def decode_response({:ok, body}) do
@@ -48,6 +50,14 @@ defmodule Issues.CLI do
     error = :jsx.decode(body)["message"]
     IO.puts "Error fetching from GitHub: #{error}"
     System.halt(2)
+  end
+
+  def convert_list_to_hashdicts(list) do
+    list |> Enum.map(&Enum.into(&1, HashDict.new))
+  end
+
+  def sort_into_ascending_order(issues_list) do
+    Enum.sort issues_list, fn i1, i2 -> i1["created_at"] < i2["created_at"] end
   end
 
 end
