@@ -36,7 +36,18 @@ defmodule Issues.CLI do
   end
 
   def process({username, project, count}) do
-    Issue.GitHubIssues.fetch(username, project)
+    Issues.GitHubIssues.fetch(username, project)
+    |> decode_response
+  end
+
+  def decode_response({:ok, body}) do
+    :jsx.decode(body)
+  end
+
+  def decode_response({:error, body}) do
+    error = :jsx.decode(body)["message"]
+    IO.puts "Error fetching from GitHub: #{error}"
+    System.halt(2)
   end
 
 end
