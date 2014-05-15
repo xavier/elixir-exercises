@@ -6,6 +6,8 @@ defmodule Issues.Mixfile do
      version: "0.0.1",
      elixir: "~> 0.13.0",
      escript_main_module: Issues.CLI,
+     name: "Issues",
+     source_url: "http://github.com/xavier/elixir-exercises",
      deps: deps]
   end
 
@@ -27,7 +29,8 @@ defmodule Issues.Mixfile do
   defp deps do
     [
       { :httpotion, github: "pragdave/httpotion" },
-      { :jsx,       github: "talentdeficit/jsx" }
+      { :jsx,       github: "talentdeficit/jsx" },
+      { :ex_doc,    github: "elixir-lang/ex_doc" }
     ]
   end
 end
