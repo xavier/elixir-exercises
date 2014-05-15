@@ -41,6 +41,7 @@ defmodule Issues.CLI do
     |> convert_list_to_hashdicts
     |> sort_into_ascending_order
     |> Enum.take(count)
+    |> Issues.TableFormatter.format(~w{number created_at title})
   end
 
   def decode_response({:ok, body}) do
